@@ -42,7 +42,7 @@ function clear(){
     firstNumber = '0';
     secondNumber = '0';
     operator = '';
-    screenInput.value = firstNumber;
+    screenInput.textContent = firstNumber;
 }
 
 function checkEmptyValues(){
@@ -64,12 +64,12 @@ function handleButton(e){
         clear();
     }else if (target.classList.contains('operator')) {
         if (firstNumber !== '0' && operator !== '') {
-            screenInput.value = operate(Number(firstNumber), operator, Number(secondNumber))
-            if (screenInput.value === 'Math error'){
+            screenInput.textContent = operate(Number(firstNumber), operator, Number(secondNumber))
+            if (screenInput.textContent === 'Math error'){
                 emptyValues();
             } else {
                 emptyValues();
-                firstNumber = String(screenInput.value);
+                firstNumber = String(screenInput.textContent);
             }  
         } 
         console.log('Operator button clicked:', target.value);
@@ -77,12 +77,12 @@ function handleButton(e){
         console.log(typeof(operator))
     } else if (target.classList.contains('calculate')){
         if (!checkEmptyValues()) {
-            screenInput.value = operate(Number(firstNumber), operator, Number(secondNumber));
-            if (screenInput.value === 'Math error'){
+            screenInput.textContent = operate(Number(firstNumber), operator, Number(secondNumber));
+            if (screenInput.textContent === 'Math error'){
                 emptyValues();
             } else {
                 emptyValues();
-                firstNumber = String(screenInput.value);
+                firstNumber = String(screenInput.textContent);
             }  
         }
     }else if (operator === '') {
@@ -100,7 +100,7 @@ function handleButton(e){
         } else if (!target.classList.contains('decimal')) {
             firstNumber += target.value;
         }
-        screenInput.value = firstNumber;
+        screenInput.textContent = firstNumber;
     } else { 
         console.log('Second numbers clicked:', target.value);
         if (secondNumber === '0') {
@@ -116,7 +116,7 @@ function handleButton(e){
         } else if (!target.classList.contains('decimal')){
             secondNumber += target.value;
         }
-        screenInput.value = secondNumber;
+        screenInput.textContent = secondNumber;
     }
 }
 
@@ -129,5 +129,5 @@ numButtons.forEach(button => {
     button.addEventListener("click", handleButton);
 });
 
-let screenInput = document.querySelector("input");
+let screenInput = document.querySelector(".input");
 
